@@ -1,17 +1,19 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2 
 
-process sayHello {
+process LOLO {
   input: 
-    val x
+    path(x)
   output:
-    stdout
+    path("lolo")
+    
   script:
     """
-    echo '$x world!'
+    cat x > lolo
+    echo "lolo" >> lolo
     """
 }
 
 workflow {
-  Channel.of('Bonjour', 'Ciao', 'Hello', 'Hola') | sayHello | view
+  LOLO(file(params.input))
 }
