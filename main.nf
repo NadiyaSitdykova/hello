@@ -9,7 +9,7 @@ process LOLO {
     
   script:
     """
-    cat x > lolo
+    cat ${x} > lolo
     echo "lolo" >> lolo
     """
 }
